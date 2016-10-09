@@ -1,4 +1,4 @@
-package com.tramy.sync.kafka;
+package org.linuxsogood.demo.kafka;
 
 import kafka.consumer.Consumer;
 import kafka.consumer.ConsumerConfig;

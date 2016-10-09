@@ -66,5 +66,5 @@ kafka:
     address: 192.168.0.231:9092
   zookeeper:
     connect: 192.168.0.231:2181
-  topic: firehome.topic
-  messageKey: firehome.key
+  topic: tramy.topic
+  messageKey: tramy.key

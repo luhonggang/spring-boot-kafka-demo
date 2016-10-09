@@ -1,4 +1,4 @@
-package com.tramy.sync.kafka;
+package org.linuxsogood.demo.kafka;
 
 import kafka.javaapi.producer.Producer;
 import kafka.producer.KeyedMessage;
@@ -18,7 +18,7 @@ public class ProducerDemo {
 		// key.serializer.class默认为serializer.class
 		props.put("key.serializer.class", "kafka.serializer.StringEncoder");
 		// 可选配置，如果不配置，则使用默认的partitioner
-		props.put("partitioner.class", "com.tramy.sync.kafka.PartitionerDemo");
+		props.put("partitioner.class", "PartitionerDemo");
 		// 触发acknowledgement机制，否则是fire and forget，可能会引起数据丢失
 		// 值为0,1,-1,可以参考
 		// http://kafka.apache.org/08/configuration.html

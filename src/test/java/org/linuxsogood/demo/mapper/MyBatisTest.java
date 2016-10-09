@@ -22,11 +22,12 @@
  * THE SOFTWARE.
  */
 
-package com.tramy.sync.mapper;
+package org.linuxsogood.demo.mapper;
 
-import com.tramy.sync.Starter;
-import com.tramy.sync.model.Customer;
-import org.junit.Assert;
+import com.alibaba.fastjson.JSON;
+import org.linuxsogood.demo.Starter;
+import org.linuxsogood.demo.model.Customer;
+import org.linuxsogood.demo.model.CustomerExample;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.slf4j.Logger;
@@ -38,6 +39,7 @@ import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.math.BigDecimal;
+import java.util.List;
 
 /**
  */
@@ -53,8 +55,11 @@ public class MyBatisTest {
 
     @Test
     public void testCustomer() {
-        Customer customer = mapper.selectByPrimaryKey(new BigDecimal(39022289348803800l));
-        Assert.assertNotNull(customer);
+        CustomerExample example = new CustomerExample();
+        example.createCriteria().andCustomerIdEqualTo(new BigDecimal(39022289348803800l));
+        List<Customer> customers = mapper.selectByExample(example);
+        //Customer customer = mapper.selectByPrimaryKey(new BigDecimal(39022289348803800l));
+        System.out.println(JSON.toJSONString(customers.get(0)));
     }
 
 }
