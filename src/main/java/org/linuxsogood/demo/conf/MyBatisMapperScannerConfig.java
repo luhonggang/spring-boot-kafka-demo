@@ -10,17 +10,19 @@ import java.util.Properties;
 @AutoConfigureAfter(MyBatisConfig.class)
 public class MyBatisMapperScannerConfig {
 
+
     @Bean
     public MapperScannerConfigurer mapperScannerConfigurer() {
         MapperScannerConfigurer mapperScannerConfigurer = new MapperScannerConfigurer();
         mapperScannerConfigurer.setSqlSessionFactoryBeanName("sqlSessionFactory");
         mapperScannerConfigurer.setBasePackage("com.tramy.sync.mapper");
         Properties properties = new Properties();
-        properties.setProperty("mappers", "MyMapper");
+        properties.setProperty("mappers", "org.linuxsogood.demo.util.MyMapper");
         properties.setProperty("notEmpty", "false");
         properties.setProperty("IDENTITY", "MYSQL");
         mapperScannerConfigurer.setProperties(properties);
         return mapperScannerConfigurer;
     }
+
 
 }

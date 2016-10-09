@@ -9,7 +9,7 @@ import org.springframework.kafka.annotation.EnableKafka;
  * 程序入口
  */
 @SpringBootApplication
-@ComponentScan(basePackages = "com.tramy.sync")
+@ComponentScan(basePackages = "org.linuxsogood.demo")
 @EnableKafka
 public class Starter {
 
