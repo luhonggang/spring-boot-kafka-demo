@@ -23,7 +23,7 @@ public class KafkaConsumerConfig {
 	@Value("${kafka.broker.address}")
 	private String brokerAddress;
 
-    @Bean
+	@Bean
 	KafkaListenerContainerFactory<ConcurrentMessageListenerContainer<String, String>> kafkaListenerContainerFactory() {
 		ConcurrentKafkaListenerContainerFactory<String, String> factory = new ConcurrentKafkaListenerContainerFactory<>();
 		factory.setConsumerFactory(consumerFactory());
@@ -36,7 +36,7 @@ public class KafkaConsumerConfig {
 	public ConsumerFactory<String, String> consumerFactory() {
 		return new DefaultKafkaConsumerFactory<>(consumerConfigs());
 	}
- 
+
 	@Bean
 	public Map<String, Object> consumerConfigs() {
 		Map<String, Object> propsMap = new HashMap<>();
@@ -46,11 +46,11 @@ public class KafkaConsumerConfig {
 		propsMap.put(ConsumerConfig.SESSION_TIMEOUT_MS_CONFIG, "15000");
 		propsMap.put(ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class);
 		propsMap.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class);
-		propsMap.put(ConsumerConfig.GROUP_ID_CONFIG, "group1");
+		propsMap.put(ConsumerConfig.GROUP_ID_CONFIG, "group-dev");//group 一样表示两个一个组,两台机器同时处理一条消息,只有一条被处理
 		propsMap.put(ConsumerConfig.AUTO_OFFSET_RESET_CONFIG, "earliest");
 		return propsMap;
 	}
- 
+
 	@Bean
 	public Listener listener() {
 		return new Listener();

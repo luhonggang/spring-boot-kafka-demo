@@ -20,7 +20,7 @@ public class KafkaProducerConfig {
 	@Value("${kafka.broker.address}")
 	private String brokerAddress;
 
-    @Bean
+	@Bean
 	public ProducerFactory<String, String> producerFactory() {
 		return new DefaultKafkaProducerFactory<>(producerConfigs());
 	}
@@ -37,7 +37,7 @@ public class KafkaProducerConfig {
 		props.put(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, StringSerializer.class);
 		return props;
 	}
- 
+
 	@Bean
 	public KafkaTemplate<String, String> kafkaTemplate() {
 		return new KafkaTemplate<String, String>(producerFactory());

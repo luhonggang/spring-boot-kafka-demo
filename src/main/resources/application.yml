@@ -5,6 +5,7 @@ server:
 logging:
     level:
         com.tramy.sync: DEBUG
+    file: kafka.log
 
 spring:
     datasource:
